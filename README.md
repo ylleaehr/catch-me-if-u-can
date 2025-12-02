@@ -22,3 +22,23 @@ Movement is pixel-based and controlled with the joystick. Random obstacles add s
 
 Multiplayer functionality is supported via ESP-NOW wireless communication.
 
+## How to Play – Direction Overview
+**Starting the Game to trigger the game start sequence.**
+- Press both buttons (red + blue) at the same time for 3 seconds.
+
+
+**The LED matrix will light up and assign your role:**
+- Red icon → Hunter
+- Blue icon → Runner
+
+
+**Game Objective**
+
+If you are the Hunter:
+- Your goal is to reach the exact position of the Runner on the 8×8 grid.
+- If you catch the player → you win the round.
+
+If you are the Runner:
+- Your goal is to avoid the Hunter until the timer runs out.
+- If time expires → you win the round.
+      
