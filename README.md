@@ -1,54 +1,98 @@
 # “Catch Me If You Can” – ESP32 Retro Chase Game
 
 ## Project Overview
-“Catch Me If You Can” is a self-built 2D chase game inspired by the playground game “Fangis.” The system is implemented on an ESP32 microcontroller using MicroPython and displayed on an 8×8 NeoPixel LED matrix. Players control their character using a joystick and dual-button module. The device is fully portable thanks to a 3.7V Li-Ion battery and a 3D-printed enclosure.
+**Catch Me If You Can** is a self-built 2D chase game inspired by the classic playground game *Fangis*.  
+It runs on an **ESP32 microcontroller** using **MicroPython** and is displayed on an **8×8 LED matrix** (HT16K33 or NeoPixel version).
 
-## Game Play
-Gameplay
-The game features a top-down 8×8 arena where two opponents take different roles:
-- Hunter (Fänger) tries to catch the opponent
-- Runner (Wegrenner) tries to escape until the timer expires
+Players move their character via a **joystick** and activate special abilities using a **dual-button module**.  
+The game is fully portable thanks to a **3.7V Li-Ion battery** and a **custom 3D-printed enclosure**.
 
-Movement is pixel-based and controlled with the joystick. Random obstacles add strategic elements, while special abilities enhance gameplay.
+---
+
+## Gameplay Overview
+
+The game takes place on a **top-down 8×8 arena** where two players compete as:
+
+- **Hunter (Fänger)** → tries to catch the Runner  
+- **Runner (Wegrenner)** → tries to escape until the timer expires  
+
+Movement is pixel-based and controlled using the joystick.  
+Random obstacles add strategic depth, and special abilities such as **Speed Boost** and **Invisibility** make each round dynamic and competitive.
+
+---
 
 ## Hardware Components
-- ESP32 Dev Board (MicroPython)
-- NeoPixel 8×8 Matrix for the main game display for status and messages
-- Joystick A06-05 TZT for directional control
-- M5Stack Dual-Button Unit for abilities
-- DFPlayer Mini + speaker for sound effects
-- 3.7V Li-Ion 500mAh battery for mobile power
-- Custom 3D-printed PLA enclosure
 
-Multiplayer functionality is supported via ESP-NOW wireless communication.
+- **ESP32 Dev Board** (MicroPython compatible)  
+- **8×8 LED Matrix** (HT16K33 or WS2812 NeoPixel version)  
+- **Joystick A06-05 TZT** for directional control  
+- **M5Stack Dual-Button Unit** (red + blue) for abilities  
+- **DFPlayer Mini + speaker** for background music & sound effects  
+- **3.7V Li-Ion 500 mAh battery** for mobile power  
+- **Custom PLA 3D-printed enclosure**  
+- Optional: **ESP-NOW wireless communication** for 2-player mode  
 
-## How to Play – Direction Overview
-**Starting the Game to trigger the game start sequence.**
-- Press both buttons (red + blue) at the same time for 3 seconds.
+---
 
+## How to Play
 
-**The LED matrix will light up and assign your role:**
-- Red icon → Hunter
-- Blue icon → Runner
+### 1. Starting the Game
+To begin a new round:
 
+**Press and hold both buttons (red + blue) for 3 seconds.**  
+This triggers the start sequence.
 
-**Game Objective**
+### 2. Role Assignment
+The LED matrix will display your assigned role:
 
-If you are the Hunter:
-- Your goal is to reach the exact position of the Runner on the 8×8 grid.
-- If you catch the player → you win the round.
+- 🔴 **Red icon → Hunter**  
+- 🔵 **Blue icon → Runner**
 
-If you are the Runner:
-- Your goal is to avoid the Hunter until the timer runs out.
-- If time expires → you win the round.
-      
-## How to build
-### Wiring
+### 3. Objectives
+#### If you are the Hunter:
+- Reach the **exact same position** as the Runner.  
+- If you catch the Runner → **Hunter wins**.
+
+#### If you are the Runner:
+- Avoid the Hunter until the **2-minute timer** expires.  
+- If time runs out → **Runner wins**.
+
+Special abilities (Speed Boost & Invisibility) can be activated with the dual-button module and are shown on the display.
+
+---
+
+# How to Build
+## Hardware Wiring
+
 ![bildneuneu](https://github.com/user-attachments/assets/e0bd7616-38f6-4fc3-8fda-9cf41c8ec317)
 
-### Uploading the code
-* Copy the content of your `src` from your computer to your board
-* Install the libraries listed above
-* ...
-### Feedback and questions
-If you are interested in this project and need to ask questions get in touch with us over Instagram/TikTok/etc/etc
+### Main Wiring Summary
+
+| Component | Pins / Connection |
+|----------|-------------------|
+| **HT16K33 LED Matrix** | SDA → GPIO 21, SCL → GPIO 22, VCC 5V, GND |
+| **Joystick A06-05** | VRX → GPIO 3, VRY → GPIO 4, VCC 3.3V, GND |
+| **Red Button** | Connected to Modulino **A0** |
+| **Blue Button** | Connected to Modulino **A1** |
+| **DFPlayer Mini** | RX → ESP32 TX, TX → ESP32 RX, VCC 5V, GND |
+| **Speaker** | SPK+ / SPK− on DFPlayer |
+| **Battery** | 3.7V → boost to 5V (optional), or USB power |
+
+---
+
+## Uploading the Code
+
+1. Install **MicroPython** on the ESP32.  
+2. Connect the ESP32 via USB.  
+3. Copy all files from the `src/` folder to the board.  
+4. Make sure the following libraries are present on the device:  
+   - `dfplayer.py`  
+   - `ht16k33.py`  
+   - `espnow` (built-in on ESP32 MicroPython)  
+5. Reset the board — the game starts automatically.
+
+---
+# Code
+
+
+
