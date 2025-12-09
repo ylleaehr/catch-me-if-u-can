@@ -42,3 +42,13 @@ If you are the Runner:
 - Your goal is to avoid the Hunter until the timer runs out.
 - If time expires → you win the round.
       
+## How to build
+### Wiring
+![bildneuneu](https://github.com/user-attachments/assets/e0bd7616-38f6-4fc3-8fda-9cf41c8ec317)
+
+### Uploading the code
+* Copy the content of your `src` from your computer to your board
+* Install the libraries listed above
+* ...
+### Feedback and questions
+If you are interested in this project and need to ask questions get in touch with us over Instagram/TikTok/etc/etc
